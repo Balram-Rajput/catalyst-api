@@ -1,0 +1,13 @@
+# .htaccess — add this to your existing project root
+
+RewriteEngine On
+
+# Route /api/* requests to Node.js API (port 4300)
+RewriteCond %{REQUEST_URI} ^/api [NC]
+RewriteRule ^api/(.*)$ http://localhost:4300/ [P,L]
+
+# Existing frontend (React/Angular etc.) routing
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.html [L]
+```
